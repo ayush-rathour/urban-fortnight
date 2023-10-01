@@ -1,0 +1,307 @@
+<!doctype html>
+<html> 
+ <head> 
+  <title>My Futuristic Website</title> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: fantasy;
+      margin: 0;
+      padding: 0;
+      background-color: #222;
+      color: #fff;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      animation: fade-in 1s ease-in-out;
+    }
+
+    h1 {
+      color: #00d2ff;
+      font-size: 36px;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      animation: slide-down 1s ease-in-out;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline;
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+    }
+
+    nav a:hover {
+      background-color: #00d2ff;
+      border-radius: 5px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      padding: 20px;
+      animation: slide-up 1s ease-in-out;
+    }
+
+    .section {
+      margin-top: 40px;
+      border-top: 1px solid #00d2ff;
+      padding-top: 20px;
+      opacity: 0;
+      animation: fade-in-up 1s ease-in-out forwards;
+    }
+
+    .section h2 {
+      color: #00d2ff;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .section p {
+      color: #ccc;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .section li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .project-title {
+      color: #00d2ff;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-description {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .message-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .message-form input[type="text"],
+    .message-form input[type="email"],
+    .message-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .message-form textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    .message-form button {
+      padding: 10px 20px;
+      background-color: #00d2ff;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .message-form button:hover {
+      background-color: #0087b3;
+    }
+
+    .message-success,
+    .message-error {
+      margin-top: 20px;
+      color: #00ff9c;
+      font-size: 14px;
+    }
+
+    .message-error {
+      color: #ff3b3b;
+    }
+
+    .contact-social-icons {
+      margin-top: 30px;
+    }
+
+    .contact-social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #00d2ff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .contact-social-icons a:hover {
+      color: #0087b3;
+    }
+
+    .contact-social-icons p {
+      color: #ccc;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-down {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slide-up {
+      0% {
+        transform: translateY(100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(50%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style> 
+  <script>
+    function sendMessage() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("messageText").value;
+
+      // Perform validation, e.g., check if required fields are filled
+      if (name === "" || email === "" || message === "") {
+          document.getElementById("messageStatus").innerHTML = "Please fill in all the fields.";
+          document.getElementById("messageStatus").className = "message-error";
+          return;
+      }
+
+      // Send the message via email
+      var emailLink = "mailto:ayushrathour602@gmail.com?subject=Message from " + encodeURIComponent(name) + "&body=" + encodeURIComponent(message);
+      window.location.href = emailLink;
+
+      // Reset the form
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("messageText").value = "";
+      document.getElementById("messageStatus").innerHTML = "Message sent successfully!";
+      document.getElementById("messageStatus").className = "message-success";
+    }
+  </script> 
+ </head> 
+ <body> 
+  <header> 
+   <h1>Welcome to My Futuristic Website</h1> 
+  </header> 
+  <nav> 
+   <ul> 
+    <li><a href="#about">About Me</a></li> 
+    <li><a href="#skills">Skills</a></li> 
+    <li><a href="#projects">Projects</a></li> 
+    <li><a href="#contact">Contact</a></li> 
+    <li><a href="#message">Message</a></li> 
+   </ul> 
+  </nav> 
+  <div class="container"> 
+   <div class="section" id="about"> 
+    <h2>About Me</h2> 
+    <p>I'm Ayush Rathour, a teenager and a beginner web developer. I'm passionate about coding and creating futuristic websites.</p> 
+   </div> 
+   <div class="section" id="skills"> 
+    <h2>Skills</h2> 
+    <ul> 
+     <li>HTML5</li> 
+     <li>CSS3</li> 
+     <li>JavaScript</li> 
+     <li>Responsive Web Design</li> 
+     <li>UI/UX Design</li> 
+     <li>Web Development</li> 
+    </ul> 
+   </div> 
+   <div class="section" id="projects"> 
+    <h2>Projects</h2> 
+    <div class="project"> 
+     <h3 class="project-title">Project 1</h3> 
+     <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id magna vitae nunc pretium malesuada.</p> 
+    </div> 
+    <div class="project"> 
+     <h3 class="project-title">Project 2</h3> 
+     <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id magna vitae nunc pretium malesuada.</p> 
+    </div> 
+   </div> 
+   <div class="section" id="contact"> 
+    <h2>Contact</h2> 
+    <p>Let's get in touch!</p> 
+    <div class="contact-social-icons"> <a href="https://instagram.com/ayush_607_"><i class="fab fa-instagram"></i></a> <a href="https://www.facebook.com/ayush602?mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a> <a href="https://wa.me/916396215185"><i class="fab fa-whatsapp"></i></a> 
+    </div> 
+    <p>Connect with me on social media:</p> 
+   </div> 
+   <div class="section" id="message"> 
+    <h2>Message</h2> 
+    <div class="message-form"> 
+     <input type="text" id="name" placeholder="Your Name"> 
+     <input type="email" id="email" placeholder="Your Email"> <textarea id="messageText" placeholder="Your Message"></textarea> <button onclick="sendMessage()">Send Message</button> 
+     <div id="messageStatus"></div> 
+    </div> 
+   </div> 
+  </div> 
+  <footer> 
+   <p>© 2023 Ayush Rathour. All rights reserved.</p> 
+  </footer> 
+ 
+</body></html>
